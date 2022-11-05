@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-deploy
+  labels:
+    app: consumer
+spec:
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumer
+  template:
+    metadata:
+      labels:
+        app: consumer
+    spec:
+      containers:
+      - image: roxsross12/consumer:1.0.0
+        name: contendor-consumer
+        env:
+          - name: PYTHONUNBUFFERED
+            value: "1"
