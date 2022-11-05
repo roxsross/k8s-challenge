@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-flask-deploy
+  labels:
+    app: app-flask
+spec:
+  revisionHistoryLimit: 2
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-flask
+  template:
+    metadata:
+      labels:
+        app: app-flask
+    spec:
+      containers:
+      - image: roxsross12/flask-app:1.0.0
+        name: contendor-app-flask
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-flask-app
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8000
+    nodePort: 30000
+  selector:
+    app: app-flask
+        
+        
