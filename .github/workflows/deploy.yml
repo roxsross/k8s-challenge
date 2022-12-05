@@ -28,7 +28,7 @@ jobs:
           aws-region: us-east-1 
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name ${{ env.cluster }} --region us-east-1
-      - name: deploy to eks
+      - name: deploy to eks prueba
         run: |
           kubectl get nodes -A
       
