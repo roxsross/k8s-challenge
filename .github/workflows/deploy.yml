@@ -30,6 +30,5 @@ jobs:
         run: aws eks update-kubeconfig --name ${{ env.cluster }} --region us-east-1
       - name: deploy to eks
         run: |
-          kubectl apply -f app-deploy.yaml -n devops
-          kubectl apply -f consumer-deploy.yaml -n devops
+          kubectl get nodes -A
       
