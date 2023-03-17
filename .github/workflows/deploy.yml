@@ -12,8 +12,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      cluster: "tst-cluster"
-      namespaces: "devops"
+      cluster: "tcss702-eks"
+      namespaces: "default"
 
     steps:
       - uses: actions/checkout@v3
