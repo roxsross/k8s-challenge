@@ -2,7 +2,7 @@ name: deploy to eks
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "mundose" ]
   pull_request:
     branches: [ "master" ]
 
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       cluster: "tcss702-eks"
-      namespaces: "default"
+      namespaces: "mundose"
 
     steps:
       - uses: actions/checkout@v3
