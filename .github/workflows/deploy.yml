@@ -12,7 +12,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      cluster: "tcss702-eks"
+      cluster: "test-cluster"
       namespaces: "default"
 
     steps:
