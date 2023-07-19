@@ -12,14 +12,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      cluster: "test-cluster"
-      namespaces: "default"
+      cluster: "roxsross-eks"
+      namespaces: "deploy"
 
     steps:
       - uses: actions/checkout@v3
       - uses: azure/setup-kubectl@v3
         with:
-           version: 'v1.23.6' 
+           version: 'v1.25.6' 
         id: install 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -31,7 +31,6 @@ jobs:
         run: aws eks update-kubeconfig --name ${{ env.cluster }} --region us-east-1
       - name: deploy to eks prueba
         run: |
-          kubectl get nodes -A
           kubectl apply -f app-deploy.yaml -n ${{ env.namespaces }}
           kubectl apply -f consumer-deploy.yaml -n ${{ env.namespaces }}
           
