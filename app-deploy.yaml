@@ -8,7 +8,7 @@ spec:
   revisionHistoryLimit: 2
   strategy:
     type: RollingUpdate
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app-flask
