@@ -40,12 +40,12 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true        
           
       - name: Setup Litmus
-        uses: roxsross/chaos-actions@master
+        uses: merkata/github-chaos-actions@fix/oci-cli
         env:
           INSTALL_LITMUS: true
 
       - name: Running Litmus pod delete chaos experiment
-        uses: roxsross/chaos-actions@master
+        uses: merkata/github-chaos-actions@fix/oci-cli
         env:
           EXPERIMENT_NAME: pod-delete
           EXPERIMENT_IMAGE: litmuschaos/go-runner
@@ -61,6 +61,6 @@ jobs:
 
       - name: Uninstall Litmus
         if: always()
-        uses: roxsross/chaos-actions@master
+        uses: merkata/github-chaos-actions@fix/oci-cli
         env:
           LITMUS_CLEANUP: true      
