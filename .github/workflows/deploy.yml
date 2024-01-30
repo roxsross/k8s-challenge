@@ -12,8 +12,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      cluster: "roxsross-eks"
-      namespaces: "deploy"
+      cluster: "roxsross-gitops-eks"
+      namespaces: "workshop"
 
     steps:
       - uses: actions/checkout@v3
