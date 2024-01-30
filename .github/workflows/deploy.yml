@@ -39,11 +39,6 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true        
           
-      - name: Setup Litmus
-        uses: merkata/github-chaos-actions@fix/oci-cli
-        env:
-          INSTALL_LITMUS: true
-
       - name: Running Litmus pod delete chaos experiment
         uses: merkata/github-chaos-actions@fix/oci-cli
         env:
