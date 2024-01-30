@@ -32,6 +32,29 @@ jobs:
       - name: deploy to eks prueba
         run: |
           kubectl apply -f app-deploy.yaml -n ${{ env.namespaces }}
-          kubectl apply -f consumer-deploy.yaml -n ${{ env.namespaces }}
-          
-      
+          kubectl apply -f consumer-deploy.yaml -n ${{ env.namespaces }}         
+      - name: Setup Litmus
+        uses: litmuschaos/github-chaos-actions@master
+        env:
+          INSTALL_LITMUS: true
+
+      - name: Running Litmus pod delete chaos experiment
+        uses: litmuschaos/github-chaos-actions@master
+        env:
+          EXPERIMENT_NAME: pod-delete
+          EXPERIMENT_IMAGE: litmuschaos/go-runner
+          EXPERIMENT_IMAGE_TAG: latest
+          JOB_CLEANUP_POLICY: delete
+          APP_NS: workshop
+          APP_LABEL: app=app-flask
+          APP_KIND: deployment
+          IMAGE_PULL_POLICY: Always
+          TOTAL_CHAOS_DURATION: 30
+          CHAOS_INTERVAL: 10
+          FORCE: false
+
+      - name: Uninstall Litmus
+        if: always()
+        uses: litmuschaos/github-chaos-actions@master
+        env:
+          LITMUS_CLEANUP: true      
