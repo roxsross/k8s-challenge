@@ -49,7 +49,7 @@ jobs:
         env:
           EXPERIMENT_NAME: pod-delete
           EXPERIMENT_IMAGE: litmuschaos/go-runner
-          EXPERIMENT_IMAGE_TAG: latest
+          EXPERIMENT_IMAGE_TAG: 3.3.0
           JOB_CLEANUP_POLICY: delete
           APP_NS: workshop
           APP_LABEL: app=app-flask
